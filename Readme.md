@@ -1,7 +1,7 @@
 # Учебный проект «Код и Магия» [![Build status][travis-image]][travis-url] [![Dependency status][dependency-image]][dependency-url]
 
 * Студент: [Игорь Беляковский](https://up.htmlacademy.ru/javascript/8/user/191506).
-* Наставник: `Неизвестно`.
+* Наставник: [Александр Вагнер](https://htmlacademy.ru/profile/id354297).
 
 ---
 
