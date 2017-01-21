@@ -30,7 +30,7 @@ window.renderStatistics = function (ctx, names, times) {
 
   for (i = 0; i < times.length; i++) {
     var name = names[i];
-        time = times[i];
+    time = times[i];
     var height = step * time;
 
     ctx.fillStyle = name === 'Вы' ? '#FF0000' : 'rgb(0, 0, ' + Math.round(80 + Math.random() * (255 - 80)) + ')';
