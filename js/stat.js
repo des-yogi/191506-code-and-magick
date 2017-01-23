@@ -11,10 +11,10 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillStyle = '#000';
   ctx.font = '16px PT Mono';
 
-  ctx.fillText('Ура вы победили!', 140, 40);
+  ctx.fillText('Ура, вы победили!', 140, 40);
   ctx.fillText('Список результатов:', 140, 60);
 
-  var max = -1;
+  var max = times[0];
 
   for (var i = 0; i < times.length; i++) {
     var time = times[i];
