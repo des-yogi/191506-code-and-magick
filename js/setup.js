@@ -5,7 +5,6 @@ var setupOpenBtn = document.querySelector('.setup-open');
 var setupWindow = document.querySelector('.overlay');
 
 setupOpenBtn.addEventListener('click', function (e) {
-  e.preventDefault();
   setupWindow.classList.toggle('invisible');
 });
 
@@ -13,7 +12,6 @@ setupOpenBtn.addEventListener('click', function (e) {
 var closeBtn = document.querySelector('.setup-close');
 
 closeBtn.addEventListener('click', function (e) {
-  e.preventDefault();
   setupWindow.classList.add('invisible');
 });
 
@@ -32,6 +30,7 @@ wizardNameInput.addEventListener('click', function (e) {
   wizardNameInput.placeholder = 'Введите имя мага';
 });
 saveBtn.addEventListener('click', function (e) {
+  wizardNameInput.required = true;
   if (wizardNameInput.value.length > 50) {
     e.preventDefault();
     wizardNameInput.value = '';
