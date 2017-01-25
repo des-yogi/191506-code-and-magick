@@ -34,7 +34,8 @@ wizardNameInput.addEventListener('click', function (e) {
 saveBtn.addEventListener('click', function (e) {
   if (wizardNameInput.value.length > 50) {
     e.preventDefault();
-    alert('Имя не должно содержать более 50 символов!');
+    wizardNameInput.value = '';
+    wizardNameInput.placeholder = 'Max 50 символов!';
   }
 });
 
