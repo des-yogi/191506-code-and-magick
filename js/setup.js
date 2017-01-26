@@ -62,8 +62,7 @@ fireballColor.style.backgroundColor = fireballColorSample[0];
 var count = 1;
 
 fireballColor.addEventListener('click', function (e) {
-  count < fireballColorSample.length ? fireballColor.style.backgroundColor = fireballColorSample[count++] : count = 0;
-  return this;
+  return count < fireballColorSample.length ? fireballColor.style.backgroundColor = fireballColorSample[count++] : count = 0;
 });
 
 function reColor(arr, obj) {
@@ -75,8 +74,4 @@ function reColor(arr, obj) {
       flag = false;
     }
   }
-}
-
-function reColorFireball(count) {
-
 }
