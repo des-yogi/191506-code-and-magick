@@ -42,9 +42,18 @@ saveBtn.addEventListener('click', function (e) {
 var wizardAppearance = document.querySelector('.setup-wizard-appearance');
 var wizardCoatColor = wizardAppearance.querySelector('#wizard-coat');
 var wizardCoatColorSamples = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+var temp = [];
 
 wizardCoatColor.addEventListener('click', function (e) {
-  wizardCoatColor.style.fill = reColor(wizardCoatColorSamples);
+  var flag = true;
+  while (flag) {
+    var randColor = reColor(wizardCoatColorSamples);
+    if (wizardCoatColor.style.fill !== randColor) {
+      wizardCoatColor.style.fill = randColor;
+      temp.push(randColor);
+      flag = false;
+    }
+  }
 });
 
 // Изменение цвета глаз персонажа по нажатию.
@@ -66,3 +75,4 @@ fireballColor.addEventListener('click', function (e) {
 function reColor(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
+
