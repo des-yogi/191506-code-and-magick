@@ -62,7 +62,7 @@ fireballColor.style.backgroundColor = fireballColorSample[0];
 var count = 1;
 
 fireballColor.addEventListener('click', function (e) {
-  reColorEyes(fireballColorSample, fireballColor);
+  reColorFire(fireballColorSample, fireballColor);
 });
 
 function reColor(arr, obj) {
@@ -76,12 +76,12 @@ function reColor(arr, obj) {
   }
 }
 
-function reColorEyes(arr, obj) {
+function reColorFire(arr, obj) {
   if (count < arr.length) {
     obj.style.backgroundColor = arr[count];
   }
   count++;
-  if (count == arr.length) {
+  if (count === arr.length) {
     count = 0;
   }
 }
