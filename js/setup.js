@@ -62,7 +62,7 @@ fireballColor.style.backgroundColor = fireballColorSample[0];
 var count = 1;
 
 fireballColor.addEventListener('click', function (e) {
-  return count < fireballColorSample.length ? fireballColor.style.backgroundColor = fireballColorSample[count++] : count = 0;
+  reColorEyes(fireballColorSample, fireballColor);
 });
 
 function reColor(arr, obj) {
@@ -73,5 +73,15 @@ function reColor(arr, obj) {
       obj.style.fill = randColor;
       flag = false;
     }
+  }
+}
+
+function reColorEyes(arr, obj) {
+  if (count < arr.length) {
+    obj.style.backgroundColor = arr[count];
+  }
+  count++;
+  if (count == arr.length) {
+    count = 0;
   }
 }
