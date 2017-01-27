@@ -61,10 +61,11 @@ wizardEyesColor.addEventListener('click', function (e) {
 var fireballColor = document.querySelector('.setup-fireball-wrap');
 var fireballColorSample = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 fireballColor.style.background = '#ee4830';
+var colorIndex = 1;
 
 fireballColor.addEventListener('click', function (e) {
   //  reColorCyclically(fireballColorSample, fireballColor, 'background');
-  reColorRgbRandom2(fireballColorSample, fireballColor);
+  reColorFire(fireballColorSample, fireballColor, colorIndex);
 });
 
 function reColorRgbRandom(arr, obj) {
@@ -77,19 +78,21 @@ function reColorRgbRandom(arr, obj) {
   }
 }
 
-function reColorRgbRandom2(arr, obj) {
-  for (var i = 0; i < 10; i++) {
-    var randColor = arr[Math.floor(Math.random() * arr.length)];
-    if (obj.style.background !== randColor) {
-      obj.style.background = randColor;
-      break;
-    }
-  }
-}
-
 function reColorCyclically(arr, obj, prop) {
   var index = arr.indexOf(obj.style[prop]);
   obj.style[prop] = arr[++index % arr.length];
+}
+
+function reColorFire(arr, obj) {
+  if (colorIndex < arr.length) {
+    if (colorIndex < arr.length) {
+      obj.style.backgroundColor = arr[colorIndex];
+    }
+  }
+  colorIndex++;
+  if (colorIndex === arr.length) {
+    colorIndex = 0;
+  }
 }
 
 /*
@@ -104,3 +107,20 @@ function reColorCyclically(arr, obj) {
   }
 }
 */
+
+/*
+function reColorFire(arr, obj, count) {
+  if (count < arr.length) {
+    if (colorIndex < arr.length) {
+      obj.style.backgroundColor = arr[colorIndex];
+    }
+  }
+  count++;
+  colorIndex++;
+  if (count === arr.length) {
+    count = 0;
+    colorIndex = 0;
+  }
+}
+*/
+
