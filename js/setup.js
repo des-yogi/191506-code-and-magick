@@ -44,7 +44,8 @@ var wizardCoatColor = wizardAppearance.querySelector('#wizard-coat');
 var wizardCoatColorSamples = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 
 wizardCoatColor.addEventListener('click', function (e) {
-  reColorRandom(wizardCoatColorSamples, wizardCoatColor);
+  //reColorRandom(wizardCoatColorSamples, wizardCoatColor);
+  reColorCyclically(wizardCoatColorSamples, wizardCoatColor);
 });
 
 // Изменение цвета глаз персонажа по нажатию.
@@ -52,36 +53,59 @@ var wizardEyesColorSamples = ['black', 'red', 'blue', 'yellow', 'green'];
 var wizardEyesColor = wizardAppearance.querySelector('#wizard-eyes');
 
 wizardEyesColor.addEventListener('click', function (e) {
-  reColorRandom(wizardEyesColorSamples, wizardEyesColor);
+  //reColorRandom(wizardEyesColorSamples, wizardEyesColor);
+  reColorCyclically(wizardEyesColorSamples, wizardEyesColor);
 });
 
 // Изменение цвета фаерболов по нажатию.
 var fireballColor = document.querySelector('.setup-fireball-wrap');
 var fireballColorSample = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 fireballColor.style.backgroundColor = fireballColorSample[0];
-var colorIndex = 1;
 
 fireballColor.addEventListener('click', function (e) {
-  reColorCyclically(fireballColorSample, fireballColor, colorIndex);
+  //reColorCyclically(fireballColorSample, fireballColor);
+  reColorRandom(fireballColorSample, fireballColor);
+
 });
 
 function reColorRandom(arr, obj) {
-  var flag = true;
-  for (var i = 0; i < 5 && flag; i++) {
+  for (var i = 0; i < 10; i++) {
     var randColor = arr[Math.floor(Math.random() * arr.length)];
-    if (obj.style.fill !== randColor) {
-      obj.style.fill = randColor;
-      flag = false;
+    if (obj.style.background !== randColor) {
+      obj.style.background = randColor;
+      break;
     }
   }
 }
 
-function reColorCyclically(arr, obj, count) {
-  if (colorIndex < arr.length) {
-    obj.style.backgroundColor = arr[colorIndex];
+function reColorCyclically(arr, obj) {
+  var index = arr.indexOf(obj.style.fill);
+  if (index === -1) {
+    obj.style.fill = arr[0];
   }
-  colorIndex++;
-  if (colorIndex === arr.length) {
-    colorIndex = 0;
+  obj.style.fill = arr[index + 1];
+  if (index === arr.length - 1) {
+    obj.style.fill = arr[0];
   }
 }
+
+/*function reColorCyclically(arr, obj, count) {
+  if (count < arr.length) {
+    obj.style.backgroundColor = arr[count];
+    count++;
+    colorIndex++;
+  }
+  if (count === arr.length) {
+    colorIndex = 0;
+  }
+}*/
+
+/*function reColorCyclically(arr, obj) {
+  if (count < arr.length) {
+    obj.style.backgroundColor = arr[count];
+    return count++;
+  }
+  if (count === arr.length) {
+    return count = 0;
+  }
+}*/
