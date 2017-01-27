@@ -44,40 +44,55 @@ var wizardCoatColor = wizardAppearance.querySelector('#wizard-coat');
 var wizardCoatColorSamples = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 
 wizardCoatColor.addEventListener('click', function (e) {
-  //  reColorRandom(wizardCoatColorSamples, wizardCoatColor);
-  reColorCyclically(wizardCoatColorSamples, wizardCoatColor);
+  reColorRgbRandom(wizardCoatColorSamples, wizardCoatColor);
 });
 
 //  Изменение цвета глаз персонажа по нажатию.
 var wizardEyesColorSamples = ['black', 'red', 'blue', 'yellow', 'green'];
 var wizardEyesColor = wizardAppearance.querySelector('#wizard-eyes');
+wizardEyesColor.style.fill = 'black';
 
 wizardEyesColor.addEventListener('click', function (e) {
-  //  reColorRandom(wizardEyesColorSamples, wizardEyesColor);
-  reColorCyclically(wizardEyesColorSamples, wizardEyesColor);
+  //  reColorRgbRandom(wizardEyesColorSamples, wizardEyesColor);
+  reColorCyclically(wizardEyesColorSamples, wizardEyesColor, 'fill');
 });
 
 //  Изменение цвета фаерболов по нажатию.
 var fireballColor = document.querySelector('.setup-fireball-wrap');
 var fireballColorSample = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
-fireballColor.style.backgroundColor = fireballColorSample[0];
+fireballColor.style.background = '#ee4830';
 
 fireballColor.addEventListener('click', function (e) {
-  //  reColorCyclically(fireballColorSample, fireballColor);
-  reColorRandom(fireballColorSample, fireballColor);
-
+  //  reColorCyclically(fireballColorSample, fireballColor, 'background');
+  reColorRgbRandom2(fireballColorSample, fireballColor);
 });
 
-function reColorRandom(arr, obj) {
+function reColorRgbRandom(arr, obj) {
   for (var i = 0; i < 10; i++) {
     var randColor = arr[Math.floor(Math.random() * arr.length)];
-    if (obj.style.background !== randColor) {
+    if (obj.style.fill !== randColor) {
+      obj.style.fill = randColor;
+      break;
+    }
+  }
+}
+
+function reColorRgbRandom2(arr, obj) {
+  for (var i = 0; i < 10; i++) {
+    var randColor = arr[Math.floor(Math.random() * arr.length)];
+    if (obj.style.background != randColor) {
       obj.style.background = randColor;
       break;
     }
   }
 }
 
+function reColorCyclically(arr, obj, prop) {
+  var index = arr.indexOf(obj.style[prop]);
+  obj.style[prop] = arr[++index % arr.length];
+}
+
+/*
 function reColorCyclically(arr, obj) {
   var index = arr.indexOf(obj.style.fill);
   if (index === -1) {
@@ -88,3 +103,4 @@ function reColorCyclically(arr, obj) {
     obj.style.fill = arr[0];
   }
 }
+*/
