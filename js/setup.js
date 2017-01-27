@@ -80,7 +80,7 @@ function reColorRgbRandom(arr, obj) {
 function reColorRgbRandom2(arr, obj) {
   for (var i = 0; i < 10; i++) {
     var randColor = arr[Math.floor(Math.random() * arr.length)];
-    if (obj.style.background != randColor) {
+    if (obj.style.background !== randColor) {
       obj.style.background = randColor;
       break;
     }
