@@ -21,7 +21,7 @@ window.addEventListener('keydown', function (e) {
   }
 });
 
-// Валидация ввода имени персонажа.
+//  Валидация ввода имени персонажа.
 var setupUser = document.querySelector('.setup-user');
 var wizardNameInput = setupUser.querySelector('.setup-user-name');
 var saveBtn = document.querySelector('.setup-submit');
@@ -44,26 +44,26 @@ var wizardCoatColor = wizardAppearance.querySelector('#wizard-coat');
 var wizardCoatColorSamples = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 
 wizardCoatColor.addEventListener('click', function (e) {
-  //reColorRandom(wizardCoatColorSamples, wizardCoatColor);
+  //  reColorRandom(wizardCoatColorSamples, wizardCoatColor);
   reColorCyclically(wizardCoatColorSamples, wizardCoatColor);
 });
 
-// Изменение цвета глаз персонажа по нажатию.
+//  Изменение цвета глаз персонажа по нажатию.
 var wizardEyesColorSamples = ['black', 'red', 'blue', 'yellow', 'green'];
 var wizardEyesColor = wizardAppearance.querySelector('#wizard-eyes');
 
 wizardEyesColor.addEventListener('click', function (e) {
-  //reColorRandom(wizardEyesColorSamples, wizardEyesColor);
+  //  reColorRandom(wizardEyesColorSamples, wizardEyesColor);
   reColorCyclically(wizardEyesColorSamples, wizardEyesColor);
 });
 
-// Изменение цвета фаерболов по нажатию.
+//  Изменение цвета фаерболов по нажатию.
 var fireballColor = document.querySelector('.setup-fireball-wrap');
 var fireballColorSample = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 fireballColor.style.backgroundColor = fireballColorSample[0];
 
 fireballColor.addEventListener('click', function (e) {
-  //reColorCyclically(fireballColorSample, fireballColor);
+  //  reColorCyclically(fireballColorSample, fireballColor);
   reColorRandom(fireballColorSample, fireballColor);
 
 });
@@ -88,24 +88,3 @@ function reColorCyclically(arr, obj) {
     obj.style.fill = arr[0];
   }
 }
-
-/*function reColorCyclically(arr, obj, count) {
-  if (count < arr.length) {
-    obj.style.backgroundColor = arr[count];
-    count++;
-    colorIndex++;
-  }
-  if (count === arr.length) {
-    colorIndex = 0;
-  }
-}*/
-
-/*function reColorCyclically(arr, obj) {
-  if (count < arr.length) {
-    obj.style.backgroundColor = arr[count];
-    return count++;
-  }
-  if (count === arr.length) {
-    return count = 0;
-  }
-}*/
