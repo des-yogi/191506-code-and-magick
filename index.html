@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Mono&subset=latin,cyrillic">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/custom.css">
   <title>Код и Магия</title>
 </head>
 <body>
@@ -26,17 +27,17 @@
   <div class="demo"></div>
 
   <div class="setup-open">
-    <img src="./img/user-1.jpg" class="setup-open-icon">
+    <img src="./img/user-1.jpg" class="setup-open-icon" role="button" tabindex="0" aria-pressed="false">
   </div>
 </header>
 
 <div class="overlay setup invisible">
   <form class="setup-wizard-form">
-    <span class="setup-close">&times;</span>
+    <span class="setup-close" role="button" tabindex="0" aria-pressed="false">&times;</span>
 
     <div class="setup-user">
       <img class="setup-user-pic" src="./img/user-1.jpg" />
-      <input type="text" class="setup-user-name" value="Синий Пендальф" />
+      <input type="text" class="setup-user-name" value="Синий Пендальф" role="textbox" tabindex="0" aria-required="true"/>
     </div>
 
     <div class="setup-wizard-appearance">
@@ -77,28 +78,28 @@
     </div>
 
     <div class="setup-artifacts">
-      <div class="setup-artifacts-cell"></div>
-      <div class="setup-artifacts-cell"></div>
-      <div class="setup-artifacts-cell"></div>
-      <div class="setup-artifacts-cell"></div>
+      <div class="setup-artifacts-cell" tabindex="0"></div>
+      <div class="setup-artifacts-cell" tabindex="0"></div>
+      <div class="setup-artifacts-cell" tabindex="0"></div>
+      <div class="setup-artifacts-cell" tabindex="0"></div>
 
-      <div class="setup-artifacts-cell"></div>
-      <div class="setup-artifacts-cell"></div>
-      <div class="setup-artifacts-cell"></div>
-      <div class="setup-artifacts-cell"></div>
+      <div class="setup-artifacts-cell" tabindex="0"></div>
+      <div class="setup-artifacts-cell" tabindex="0"></div>
+      <div class="setup-artifacts-cell" tabindex="0"></div>
+      <div class="setup-artifacts-cell" tabindex="0"></div>
 
-      <div class="setup-artifacts-cell"></div>
-      <div class="setup-artifacts-cell"></div>
-      <div class="setup-artifacts-cell"></div>
-      <div class="setup-artifacts-cell"></div>
+      <div class="setup-artifacts-cell" tabindex="0"></div>
+      <div class="setup-artifacts-cell" tabindex="0"></div>
+      <div class="setup-artifacts-cell" tabindex="0"></div>
+      <div class="setup-artifacts-cell" tabindex="0"></div>
 
-      <div class="setup-artifacts-cell"></div>
-      <div class="setup-artifacts-cell"></div>
-      <div class="setup-artifacts-cell"></div>
-      <div class="setup-artifacts-cell"></div>
+      <div class="setup-artifacts-cell" tabindex="0"></div>
+      <div class="setup-artifacts-cell" tabindex="0"></div>
+      <div class="setup-artifacts-cell" tabindex="0"></div>
+      <div class="setup-artifacts-cell" tabindex="0"></div>
     </div>
 
-    <button class="button setup-submit">Сохранить</button>
+    <button class="button setup-submit" role="button" tabindex="1" aria-pressed="false">Сохранить</button>
   </form>
 </div>
 
