@@ -7,17 +7,17 @@ var setupOverlay = document.querySelector('.overlay');
 var ESCAPE_KEY_CODE = 27;
 var ENTER_KEY_CODE = 13;
 
-var isActivateEvent = function(e) {
+var isActivateEvent = function (e) {
   return e.keyCode && e.keyCode === ENTER_KEY_CODE;
 };
 
-var showSetupElement = function(e) {
-    setupOverlay.classList.remove('invisible');
-    document.addEventListener('keydown', setupKeydownHadler);
-    setupOpenIcon.setAttribute('aria-pressed', 'true');
+var showSetupElement = function (e) {
+  setupOverlay.classList.remove('invisible');
+  document.addEventListener('keydown', setupKeydownHadler);
+  setupOpenIcon.setAttribute('aria-pressed', 'true');
 };
 
-var hideSetupElement = function(e) {
+var hideSetupElement = function (e) {
   setupOverlay.classList.add('invisible');
   document.removeEventListener('keydown', setupKeydownHadler);
   closeBtn.setAttribute('aria-pressed', 'true');
@@ -28,7 +28,7 @@ var setupKeydownHadler = function (e) {
     setupOverlay.classList.add('invisible');
     setupOpenIcon.setAttribute('aria-pressed', 'false');
   }
-}
+};
 
 setupOpenBtn.addEventListener('click', function (e) {
   showSetupElement(e);
