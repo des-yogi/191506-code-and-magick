@@ -2,22 +2,54 @@
 
 // Открытие окна настройки персонажа.
 var setupOpenBtn = document.querySelector('.setup-open');
-var setupWindow = document.querySelector('.overlay');
+var setupOpenIcon = document.querySelector('.setup-open img');
+var setupOverlay = document.querySelector('.overlay');
+var ESCAPE_KEY_CODE = 27;
+var ENTER_KEY_CODE = 13;
+
+var isActivateEvent = function (e) {
+  return e.keyCode && e.keyCode === ENTER_KEY_CODE;
+};
+
+var showSetupElement = function (e) {
+  setupOverlay.classList.remove('invisible');
+  document.addEventListener('keydown', setupKeydownHadler);
+  setupOpenIcon.setAttribute('aria-pressed', 'true');
+};
+
+var hideSetupElement = function (e) {
+  setupOverlay.classList.add('invisible');
+  document.removeEventListener('keydown', setupKeydownHadler);
+  closeBtn.setAttribute('aria-pressed', 'true');
+};
+
+var setupKeydownHadler = function (e) {
+  if (e.keyCode === ESCAPE_KEY_CODE) {
+    setupOverlay.classList.add('invisible');
+    setupOpenIcon.setAttribute('aria-pressed', 'false');
+  }
+};
 
 setupOpenBtn.addEventListener('click', function (e) {
-  setupWindow.classList.toggle('invisible');
+  showSetupElement(e);
+});
+
+setupOpenBtn.addEventListener('keydown', function (e) {
+  if (isActivateEvent(e)) {
+    showSetupElement(e);
+  }
 });
 
 // Закрытие окна настройки персонажа.
-var closeBtn = document.querySelector('.setup-close');
+var closeBtn = setupOverlay.querySelector('.setup-close');
 
 closeBtn.addEventListener('click', function (e) {
-  setupWindow.classList.add('invisible');
+  hideSetupElement(e);
 });
 
-window.addEventListener('keydown', function (e) {
-  if (e.keyCode === 27 && !setupWindow.classList.contains('invisible')) {
-    setupWindow.classList.add('invisible');
+closeBtn.addEventListener('keydown', function (e) {
+  if (isActivateEvent(e)) {
+    hideSetupElement(e);
   }
 });
 
@@ -25,10 +57,12 @@ window.addEventListener('keydown', function (e) {
 var setupUser = document.querySelector('.setup-user');
 var wizardNameInput = setupUser.querySelector('.setup-user-name');
 var saveBtn = document.querySelector('.setup-submit');
+
 wizardNameInput.addEventListener('click', function (e) {
   wizardNameInput.value = '';
   wizardNameInput.placeholder = 'Введите имя мага';
 });
+
 saveBtn.addEventListener('click', function (e) {
   wizardNameInput.required = true;
   if (wizardNameInput.value.length > 50) {
@@ -36,6 +70,7 @@ saveBtn.addEventListener('click', function (e) {
     wizardNameInput.value = '';
     wizardNameInput.placeholder = 'Max 50 символов!';
   }
+  saveBtn.setAttribute('aria-pressed', 'true');
 });
 
 // Изменение цвета мантии персонажа по нажатию.
@@ -94,33 +129,3 @@ function reColorFire(arr, obj) {
     colorIndex = 0;
   }
 }
-
-/*
-function reColorCyclically(arr, obj) {
-  var index = arr.indexOf(obj.style.fill);
-  if (index === -1) {
-    obj.style.fill = arr[0];
-  }
-  obj.style.fill = arr[index + 1];
-  if (index === arr.length - 1) {
-    obj.style.fill = arr[0];
-  }
-}
-*/
-
-/*
-function reColorFire(arr, obj, count) {
-  if (count < arr.length) {
-    if (colorIndex < arr.length) {
-      obj.style.backgroundColor = arr[colorIndex];
-    }
-  }
-  count++;
-  colorIndex++;
-  if (count === arr.length) {
-    count = 0;
-    colorIndex = 0;
-  }
-}
-*/
-
