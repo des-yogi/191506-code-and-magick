@@ -12,5 +12,6 @@ window.utils = {
         return randColor;
       }
     }
+    return;
   }
 };
