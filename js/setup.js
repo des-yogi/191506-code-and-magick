@@ -7,10 +7,6 @@ var setupOverlay = document.querySelector('.overlay');
 var ESCAPE_KEY_CODE = 27;
 var ENTER_KEY_CODE = 13;
 
-var isActivateEvent = function (e) {
-  return e.keyCode && e.keyCode === ENTER_KEY_CODE;
-};
-
 var showSetupElement = function (e) {
   setupOverlay.classList.remove('invisible');
   document.addEventListener('keydown', setupKeydownHadler);
@@ -98,6 +94,11 @@ var fireballColorSample = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'
 // var colorIndex = 1;
 
 window.colorizeElement(fireballColor, fireballColorSample, 'background');
+
+function isActivateEvent(e) {
+  return e.keyCode && e.keyCode === ENTER_KEY_CODE;
+};
+
 /* fireballColor.addEventListener('click', function (e) {
   reColorFire(fireballColorSample, fireballColor, colorIndex);
 });
