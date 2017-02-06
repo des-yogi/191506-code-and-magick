@@ -5,11 +5,6 @@ var setupOpenBtn = document.querySelector('.setup-open');
 var setupOpenIcon = document.querySelector('.setup-open img');
 var setupOverlay = document.querySelector('.overlay');
 var ESCAPE_KEY_CODE = 27;
-var ENTER_KEY_CODE = 13;
-
-var isActivateEvent = function (e) {
-  return e.keyCode && e.keyCode === ENTER_KEY_CODE;
-};
 
 var showSetupElement = function (e) {
   setupOverlay.classList.remove('invisible');
@@ -35,7 +30,7 @@ setupOpenBtn.addEventListener('click', function (e) {
 });
 
 setupOpenBtn.addEventListener('keydown', function (e) {
-  if (isActivateEvent(e)) {
+  if (window.utils.isActivateEvent(e)) {
     showSetupElement(e);
   }
 });
@@ -48,7 +43,7 @@ closeBtn.addEventListener('click', function (e) {
 });
 
 closeBtn.addEventListener('keydown', function (e) {
-  if (isActivateEvent(e)) {
+  if (window.utils.isActivateEvent(e)) {
     hideSetupElement(e);
   }
 });
@@ -77,33 +72,34 @@ saveBtn.addEventListener('click', function (e) {
 var wizardAppearance = document.querySelector('.setup-wizard-appearance');
 var wizardCoatColor = wizardAppearance.querySelector('#wizard-coat');
 var wizardCoatColorSamples = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+/* wizardCoatColor.addEventListener('click', function (e) {
+  // reColorRgbRandom(wizardCoatColorSamples, wizardCoatColor);
+});*/
+window.colorizeElement(wizardCoatColor, wizardCoatColorSamples, 'fill');
 
-wizardCoatColor.addEventListener('click', function (e) {
-  reColorRgbRandom(wizardCoatColorSamples, wizardCoatColor);
-});
-
-//  Изменение цвета глаз персонажа по нажатию.
+// Изменение цвета глаз персонажа по нажатию.
 var wizardEyesColorSamples = ['black', 'red', 'blue', 'yellow', 'green'];
 var wizardEyesColor = wizardAppearance.querySelector('#wizard-eyes');
-wizardEyesColor.style.fill = 'black';
 
-wizardEyesColor.addEventListener('click', function (e) {
-  //  reColorRgbRandom(wizardEyesColorSamples, wizardEyesColor);
-  reColorCyclically(wizardEyesColorSamples, wizardEyesColor, 'fill');
-});
+/* wizardEyesColor.addEventListener('click', function (e) {
+  // reColorCyclically(wizardEyesColorSamples, wizardEyesColor, 'fill');
+});*/
+window.colorizeElement(wizardEyesColor, wizardEyesColorSamples, 'fill');
 
 //  Изменение цвета фаерболов по нажатию.
 var fireballColor = document.querySelector('.setup-fireball-wrap');
 var fireballColorSample = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
-fireballColor.style.background = '#ee4830';
-var colorIndex = 1;
+// fireballColor.style.background = '#ee4830';
+// var colorIndex = 1;
 
-fireballColor.addEventListener('click', function (e) {
-  //  reColorCyclically(fireballColorSample, fireballColor, 'background');
+window.colorizeElement(fireballColor, fireballColorSample, 'background');
+
+/* fireballColor.addEventListener('click', function (e) {
   reColorFire(fireballColorSample, fireballColor, colorIndex);
 });
+*/
 
-function reColorRgbRandom(arr, obj) {
+/* function reColorRgbRandom(arr, obj) {
   for (var i = 0; i < 10; i++) {
     var randColor = arr[Math.floor(Math.random() * arr.length)];
     if (obj.style.fill !== randColor) {
@@ -129,3 +125,4 @@ function reColorFire(arr, obj) {
     colorIndex = 0;
   }
 }
+*/

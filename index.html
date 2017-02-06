@@ -40,12 +40,12 @@
       <input type="text" class="setup-user-name" value="Синий Пендальф" role="textbox" tabindex="0" aria-required="true"/>
     </div>
 
-    <div class="setup-wizard-appearance" tabindex="0">
+    <div class="setup-wizard-appearance">
       <div class="setup-wizard-wrap">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62
         86" class="setup-wizard">
           <g id="wizard">
-            <g id="wizard-coat" style="fill: #6589a4">
+            <g id="wizard-coat" style="fill: #6589a4" role="button" tabindex="0" aria-pressed="false">
               <polygon points="19 67 19 59 14 59 14 82 9 82 9 86 23 86 23 67 19 67" />
               <polygon points="19 59 19 67 23 67 23 86 48 86 48 54 19 54 19 59" />
             </g>
@@ -57,7 +57,7 @@
               <polygon points="48 39 48 44.34 43 44.34 43 49.69 33 49.69 33 44.34 29 44.34 29 48.62 23 48.62 23 53.97 29 53.97 29 59.31 33 59.31 33 64.66 38 64.66 38 70 43 70 43 64.66 48 64.66 48 53.97 53 53.97 53 48.62 57 48.62 57 39 48 39" fill="#bec1c3"/>
               <polygon points="0 47 9 47 9 38 19 38 19 24 48 24 48 28 53 28 53 18 48 18 48 13 14 13 14 18 9 18 9 23 5 23 5 38 0 38 0 47" fill="#bec1c3"/>
             </g>
-            <g id="wizard-eyes">
+            <g id="wizard-eyes" role="button" tabindex="0" aria-pressed="false">
               <rect x="28" y="33" width="5" height="5"/>
               <rect x="43" y="33" width="5" height="5"/>
             </g>
@@ -73,7 +73,7 @@
       </div>
     </div>
 
-    <div class="setup-fireball-wrap">
+    <div class="setup-fireball-wrap" role="button" tabindex="0" aria-pressed="false">
       <div class="setup-fireball"></div>
     </div>
 
@@ -128,6 +128,8 @@
     return height / 3;
   }
 </script>
+<script src="js/utils.js"></script>
+<script src="js/colorize-element.js"></script>
 <script src="js/setup.js"></script>
 <script src="js/stat.js"></script>
 <script src="js/game.js"></script>
