@@ -13,5 +13,9 @@ window.utils = {
       }
     }
     return arr[0];
+  },
+
+  isActivateEvent: function (e) {
+    return e.keyCode && e.keyCode === ENTER_KEY_CODE;
   }
 };

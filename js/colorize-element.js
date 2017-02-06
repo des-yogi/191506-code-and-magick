@@ -17,7 +17,7 @@ window.colorizeElement = function (element, colors, property) {
   });
 
   element.addEventListener('keydown', function (e) {
-    if (isActivateEvent(e)) {
+    if (window.utils.isActivateEvent(e)) {
       activityHandler(e);
     }
   });

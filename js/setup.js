@@ -31,7 +31,7 @@ setupOpenBtn.addEventListener('click', function (e) {
 });
 
 setupOpenBtn.addEventListener('keydown', function (e) {
-  if (isActivateEvent(e)) {
+  if (window.utils.isActivateEvent(e)) {
     showSetupElement(e);
   }
 });
@@ -44,7 +44,7 @@ closeBtn.addEventListener('click', function (e) {
 });
 
 closeBtn.addEventListener('keydown', function (e) {
-  if (isActivateEvent(e)) {
+  if (window.utils.isActivateEvent(e)) {
     hideSetupElement(e);
   }
 });
@@ -94,10 +94,6 @@ var fireballColorSample = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'
 // var colorIndex = 1;
 
 window.colorizeElement(fireballColor, fireballColorSample, 'background');
-
-function isActivateEvent(e) {
-  return e.keyCode && e.keyCode === ENTER_KEY_CODE;
-};
 
 /* fireballColor.addEventListener('click', function (e) {
   reColorFire(fireballColorSample, fireballColor, colorIndex);
