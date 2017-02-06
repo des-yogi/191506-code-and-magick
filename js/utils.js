@@ -1,5 +1,7 @@
 'use strict';
 
+var ENTER_KEY_CODE = 13;
+
 window.utils = {
   getRandomElement: function (arr) {
     return arr[Math.floor(Math.random() * arr.length)];
