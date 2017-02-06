@@ -5,7 +5,6 @@ var setupOpenBtn = document.querySelector('.setup-open');
 var setupOpenIcon = document.querySelector('.setup-open img');
 var setupOverlay = document.querySelector('.overlay');
 var ESCAPE_KEY_CODE = 27;
-var ENTER_KEY_CODE = 13;
 
 var showSetupElement = function (e) {
   setupOverlay.classList.remove('invisible');
