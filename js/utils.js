@@ -1,6 +1,6 @@
 'use strict';
 
-window.utils = (function() {
+window.utils = (function () {
   var ENTER_KEY_CODE = 13;
 
   return {
@@ -26,7 +26,7 @@ window.utils = (function() {
 })();
 
 
-/*window.utils = {
+/* window.utils = {
   getRandomElement: function (arr) {
     return arr[Math.floor(Math.random() * arr.length)];
   },

@@ -1,6 +1,6 @@
 'use strict';
 
-window.colorizeElement = (function() {
+window.colorizeElement = (function () {
   return function (element, colors, property) {
     var currentColor = element.style[property];
     if (!currentColor) {
@@ -25,7 +25,7 @@ window.colorizeElement = (function() {
   };
 })();
 
-/*window.colorizeElement = function (element, colors, property) {
+/* window.colorizeElement = function (element, colors, property) {
   var currentColor = element.style[property];
   if (!currentColor) {
     currentColor = colors[0];
