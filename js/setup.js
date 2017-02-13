@@ -87,27 +87,27 @@ var fireballColor = document.querySelector('.setup-fireball-wrap');
 var fireballColorSample = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
 var reColorLogic = function (element, colors, property) {
-    var currentColor = element.style[property];
-    if (!currentColor) {
-      currentColor = colors[0];
-    }
+  var currentColor = element.style[property];
+  if (!currentColor) {
+    currentColor = colors[0];
+  }
 
-    var activityHandler = function (e) {
-      var newColor = window.utils.getRandomElementExcept(colors, currentColor);
-      element.style[property] = newColor;
-      currentColor = newColor;
-    };
-
-    element.addEventListener('click', function (e) {
-      activityHandler(e);
-    });
-
-    element.addEventListener('keydown', function (e) {
-      if (window.utils.isActivateEvent(e)) {
-        activityHandler(e);
-      }
-    });
+  var activityHandler = function (e) {
+    var newColor = window.utils.getRandomElementExcept(colors, currentColor);
+    element.style[property] = newColor;
+    currentColor = newColor;
   };
+
+  element.addEventListener('click', function (e) {
+    activityHandler(e);
+  });
+
+  element.addEventListener('keydown', function (e) {
+    if (window.utils.isActivateEvent(e)) {
+      activityHandler(e);
+    }
+  });
+};
 
 window.colorizeElement(reColorLogic(wizardCoatColor, wizardCoatColorSamples, 'fill'));
 // window.colorizeElement(wizardCoatColor, wizardCoatColorSamples, 'fill');
