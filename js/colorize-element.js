@@ -1,26 +1,12 @@
 'use strict';
 
 window.colorizeElement = (function () {
-  return function (element, colors, property) {
-    var currentColor = element.style[property];
-    if (!currentColor) {
-      currentColor = colors[0];
+
+  return function (cb) {
+
+    if (typeof cb === 'function') {
+      cb();
     }
-
-    var activityHandler = function (e) {
-      var newColor = window.utils.getRandomElementExcept(colors, currentColor);
-      element.style[property] = newColor;
-      currentColor = newColor;
-    };
-
-    element.addEventListener('click', function (e) {
-      activityHandler(e);
-    });
-
-    element.addEventListener('keydown', function (e) {
-      if (window.utils.isActivateEvent(e)) {
-        activityHandler(e);
-      }
-    });
   };
+
 })();
