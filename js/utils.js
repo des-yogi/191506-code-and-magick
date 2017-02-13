@@ -4,7 +4,7 @@ window.utils = (function () {
   var ENTER_KEY_CODE = 13;
   var ESCAPE_KEY_CODE = 27;
 
-  var isKeyboardEvent = function(e) {
+  var isKeyboardEvent = function (e) {
     return typeof e.keyCode !== 'undefined';
   };
 
