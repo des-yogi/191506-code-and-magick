@@ -1,6 +1,7 @@
 'use strict';
 
 // Открытие окна настройки персонажа.
+var setup = document.querySelector('.setup');
 var setupOpenBtn = document.querySelector('.setup-open-icon');
 var setupOverlay = document.querySelector('.overlay');
 
@@ -59,6 +60,8 @@ closeBtn.addEventListener('keydown', function (e) {
 var setupUser = document.querySelector('.setup-user');
 var wizardNameInput = setupUser.querySelector('.setup-user-name');
 var saveBtn = document.querySelector('.setup-submit');
+saveBtn.style.left = '20px';
+saveBtn.style.transform = 'none';
 
 wizardNameInput.addEventListener('click', function (e) {
   wizardNameInput.value = '';
@@ -75,7 +78,6 @@ saveBtn.addEventListener('click', function (e) {
   saveBtn.setAttribute('aria-pressed', 'true');
 });
 
-// Изменение цвета мантии персонажа по нажатию.
 var wizardAppearance = document.querySelector('.setup-wizard-appearance');
 var wizardCoatColor = wizardAppearance.querySelector('#wizard-coat');
 var wizardCoatColorSamples = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
@@ -95,13 +97,53 @@ var reColorBg = function (element, newColor) {
 };
 
 window.colorizeElement(wizardCoatColor, wizardCoatColorSamples, reColorFill);
-// window.colorizeElement(wizardCoatColor, wizardCoatColorSamples, 'fill');
 
-// Изменение цвета глаз персонажа по нажатию.
 window.colorizeElement(wizardEyesColor, wizardEyesColorSamples, reColorFill);
-// window.colorizeElement(wizardEyesColor, wizardEyesColorSamples, 'fill');
 
-//  Изменение цвета фаерболов по нажатию.
 window.colorizeElement(fireballColor, fireballColorSample, reColorBg);
-// window.colorizeElement(fireballColor, fireballColorSample, 'background');
 
+var wizardsContainer = document.createElement('div');
+wizardsContainer.className = 'setup-similar';
+wizardsContainer.style.border = '1px solid yellow';
+wizardsContainer.style.width = '590px';
+wizardsContainer.style.height = '110px';
+wizardsContainer.style.transform = 'translate(160px, 400px)';
+wizardsContainer.style.display = 'flex';
+wizardsContainer.style.justifyContent = 'space-around';
+wizardsContainer.style.alignItems = 'flex-end';
+
+setup.appendChild(wizardsContainer);
+
+var URL_DATA = 'https://intensive-javascript-server-pedmyactpq.now.sh/code-and-magick/data';
+
+var onLoad = function (e) {
+  var errorHandler = function (err) {
+    console.log(err);
+  }
+
+  if (e.target.status >= 400) {
+    errorHandler('Failed to load data. Server returned status: ' + e.target.status);
+  } else if (e.target.status >= 200) {
+    var wizards = e.target.response;
+    // wizardsContainer.innerHTML = getDifferentWizards(wizards);
+    console.log(wizards);
+    wizardsContainer.innerHTML = '';
+    getDifferentWizards(wizards).forEach(function (wizard) {
+      wizardsContainer.appendChild(window.renderWizard(wizard));
+    });
+  }
+};
+
+var getDifferentWizards = function (arr) {
+  var newArr = [];
+  var wizardsAmount = 5;
+  while (newArr.length < wizardsAmount) {
+    var randomItem = window.utils.getRandomElement(arr);
+    if (newArr.indexOf(randomItem) < 0) {
+      newArr.push(randomItem);
+    }
+  }
+  return newArr;
+};
+
+window.load(URL_DATA, onLoad);

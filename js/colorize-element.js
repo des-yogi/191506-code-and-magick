@@ -8,6 +8,9 @@ window.colorizeElement = (function () {
       var newColor = window.utils.getRandomElementExcept(colors, currentColor);
       fillCallback(element, newColor);
       currentColor = newColor;
+      setTimeout(function (e) {
+        window.load(URL_DATA, onLoad);
+      }, 5000);
     };
 
     element.addEventListener('click', function (e) {
