@@ -9,7 +9,7 @@ window.colorizeElement = (function () {
       fillCallback(element, newColor);
       currentColor = newColor;
       setTimeout(function () {
-        window.load(URL_DATA, onLoad);
+        window.load(URL_DATA, window.onLoad);
       }, 5000);
     };
 

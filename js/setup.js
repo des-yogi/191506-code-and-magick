@@ -104,7 +104,7 @@ window.colorizeElement(fireballColor, fireballColorSample, reColorBg);
 
 var wizardsContainer = document.createElement('div');
 wizardsContainer.className = 'setup-similar';
-wizardsContainer.style.border = '1px solid yellow';
+// wizardsContainer.style.border = '1px solid yellow';
 wizardsContainer.style.width = '590px';
 wizardsContainer.style.height = '110px';
 wizardsContainer.style.transform = 'translate(160px, 400px)';
@@ -116,8 +116,7 @@ setup.appendChild(wizardsContainer);
 
 var URL_DATA = 'https://intensive-javascript-server-pedmyactpq.now.sh/code-and-magick/data';
 
-
-var onLoad = (function () {
+window.onLoad = (function () {
   return function (e) {
     var errorHandler = function (err) {
       console.log(err);
@@ -149,4 +148,4 @@ var getDifferentWizards = function (arr) {
   return newArr;
 };
 
-window.load(URL_DATA, onLoad);
+window.load(URL_DATA, window.onLoad);
