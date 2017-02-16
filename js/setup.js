@@ -119,7 +119,7 @@ setup.appendChild(wizardsContainer);
 window.onLoad = (function () {
   return function (e) {
     var errorHandler = function (err) {
-      console.log(err);
+      // console.log(err);
     };
 
     if (e.target.status >= 400) {
