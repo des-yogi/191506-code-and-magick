@@ -1,5 +1,7 @@
 'use strict';
 
+var URL_DATA = 'https://intensive-javascript-server-pedmyactpq.now.sh/code-and-magick/data';
+
 // Открытие окна настройки персонажа.
 var setup = document.querySelector('.setup');
 var setupOpenBtn = document.querySelector('.setup-open-icon');
@@ -113,8 +115,6 @@ wizardsContainer.style.justifyContent = 'space-around';
 wizardsContainer.style.alignItems = 'flex-end';
 
 setup.appendChild(wizardsContainer);
-
-var URL_DATA = 'https://intensive-javascript-server-pedmyactpq.now.sh/code-and-magick/data';
 
 window.onLoad = (function () {
   return function (e) {
