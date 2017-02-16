@@ -18,9 +18,12 @@ window.renderWizard = (function () {
     svgElement.style.position = 'static';
     svgElement.style.width = 50;
     svgElement.style.height = 50;
+    var elemCollection = svgElement.querySelectorAll('*');
 
-    svgElement.querySelector('#wizard-coat').style.fill = wizard.colorCoat;
-    svgElement.querySelector('#wizard-eyes').style.fill = wizard.colorEyes;
+    window.utils.changeIDtoClass(elemCollection);
+
+    svgElement.querySelector('.wizard-coat').style.fill = wizard.colorCoat;
+    svgElement.querySelector('.wizard-eyes').style.fill = wizard.colorEyes;
 
     return wizardElement;
   };
