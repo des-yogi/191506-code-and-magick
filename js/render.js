@@ -1,6 +1,6 @@
 'use strict';
 
-window.renderWizard = (function() {
+window.renderWizard = (function () {
   var wizardTemplate = document.querySelector('.setup-wizard-wrap');
 
   return function (wizard) {
@@ -23,6 +23,6 @@ window.renderWizard = (function() {
     svgElement.querySelector('#wizard-eyes').style.fill = wizard.colorEyes;
 
     return wizardElement;
-  }
+  };
 
 })();

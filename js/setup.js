@@ -116,23 +116,26 @@ setup.appendChild(wizardsContainer);
 
 var URL_DATA = 'https://intensive-javascript-server-pedmyactpq.now.sh/code-and-magick/data';
 
-var onLoad = function (e) {
-  var errorHandler = function (err) {
-    console.log(err);
-  }
 
-  if (e.target.status >= 400) {
-    errorHandler('Failed to load data. Server returned status: ' + e.target.status);
-  } else if (e.target.status >= 200) {
-    var wizards = e.target.response;
-    // wizardsContainer.innerHTML = getDifferentWizards(wizards);
-    console.log(wizards);
-    wizardsContainer.innerHTML = '';
-    getDifferentWizards(wizards).forEach(function (wizard) {
-      wizardsContainer.appendChild(window.renderWizard(wizard));
-    });
-  }
-};
+var onLoad = (function () {
+  return function (e) {
+    var errorHandler = function (err) {
+      console.log(err);
+    };
+
+    if (e.target.status >= 400) {
+      errorHandler('Failed to load data. Server returned status: ' + e.target.status);
+    } else if (e.target.status >= 200) {
+      var wizards = e.target.response;
+      // wizardsContainer.innerHTML = getDifferentWizards(wizards);
+      // console.log(wizards);
+      wizardsContainer.innerHTML = '';
+      getDifferentWizards(wizards).forEach(function (wizard) {
+        wizardsContainer.appendChild(window.renderWizard(wizard));
+      });
+    }
+  };
+})();
 
 var getDifferentWizards = function (arr) {
   var newArr = [];
