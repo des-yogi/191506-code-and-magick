@@ -98,11 +98,11 @@ var reColorBg = function (element, newColor) {
   element.style['background'] = newColor;
 };
 
-window.colorizeElement(wizardCoatColor, wizardCoatColorSamples, reColorFill);
+window.colorizeElement(wizardCoatColor, wizardCoatColorSamples, reColorFill, URL_DATA);
 
-window.colorizeElement(wizardEyesColor, wizardEyesColorSamples, reColorFill);
+window.colorizeElement(wizardEyesColor, wizardEyesColorSamples, reColorFill, URL_DATA);
 
-window.colorizeElement(fireballColor, fireballColorSample, reColorBg);
+window.colorizeElement(fireballColor, fireballColorSample, reColorBg, URL_DATA);
 
 var wizardsContainer = document.createElement('div');
 wizardsContainer.className = 'setup-similar';

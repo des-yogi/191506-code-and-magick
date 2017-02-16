@@ -1,7 +1,7 @@
 'use strict';
 
 window.colorizeElement = (function () {
-  return function (element, colors, fillCallback) {
+  return function (element, colors, fillCallback, url) {
     var currentColor = colors[0];
 
     var activityHandler = function (e) {
@@ -9,7 +9,7 @@ window.colorizeElement = (function () {
       fillCallback(element, newColor);
       currentColor = newColor;
       setTimeout(function () {
-        window.load(URL_DATA, window.onLoad);
+        window.load(url, window.onLoad);
       }, 5000);
     };
 
