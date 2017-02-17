@@ -31,7 +31,7 @@ window.utils = (function () {
       return isKeyboardEvent(e) && e.keyCode === ESCAPE_KEY_CODE;
     },
 
-    changeIDtoClass: function (arr) {
+    changeIdToClass: function (arr) {
       for (var i = 0; i < arr.length; ++i) {
         var item = arr[i].getAttribute('id');
         arr[i].setAttribute('class', item);

@@ -1,6 +1,6 @@
 'use strict';
 
-var URL_DATA = 'https://intensive-javascript-server-pedmyactpq.now.sh/code-and-magick/data';
+var URL_DATA = 'https://intensive-javascript-server-myophkugvq.now.sh/code-and-magick/data';
 
 // Открытие окна настройки персонажа.
 var setup = document.querySelector('.setup');
@@ -90,23 +90,28 @@ var wizardEyesColor = wizardAppearance.querySelector('#wizard-eyes');
 var fireballColor = document.querySelector('.setup-fireball-wrap');
 var fireballColorSample = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
-var reColorFill = function (element, newColor) {
+var reColorFill = function (element, newColor, url) {
   element.style['fill'] = newColor;
+  setTimeout(function () {
+    window.load(url, window.onLoad);
+  }, 5000);
 };
 
-var reColorBg = function (element, newColor) {
+var reColorBg = function (element, newColor, url) {
   element.style['background'] = newColor;
+  setTimeout(function () {
+    window.load(url, window.onLoad);
+  }, 5000);
 };
 
-window.colorizeElement(wizardCoatColor, wizardCoatColorSamples, reColorFill, URL_DATA);
+window.colorizeElement(wizardCoatColor, wizardCoatColorSamples, reColorFill);
 
-window.colorizeElement(wizardEyesColor, wizardEyesColorSamples, reColorFill, URL_DATA);
+window.colorizeElement(wizardEyesColor, wizardEyesColorSamples, reColorFill);
 
-window.colorizeElement(fireballColor, fireballColorSample, reColorBg, URL_DATA);
+window.colorizeElement(fireballColor, fireballColorSample, reColorBg);
 
 var wizardsContainer = document.createElement('div');
 wizardsContainer.className = 'setup-similar';
-// wizardsContainer.style.border = '1px solid yellow';
 wizardsContainer.style.width = '590px';
 wizardsContainer.style.height = '110px';
 wizardsContainer.style.transform = 'translate(160px, 400px)';
@@ -118,33 +123,32 @@ setup.appendChild(wizardsContainer);
 
 window.onLoad = (function () {
   return function (e) {
+
     var errorHandler = function (err) {
-      // console.log(err);
+      wizardsContainer.innerHTML = err;
     };
 
-    if (e.target.status >= 400) {
-      errorHandler('Failed to load data. Server returned status: ' + e.target.status);
-    } else if (e.target.status >= 200) {
+    if (e.target.status === 200) {
       var wizards = e.target.response;
-      // wizardsContainer.innerHTML = getDifferentWizards(wizards);
-      // console.log(wizards);
       wizardsContainer.innerHTML = '';
       getDifferentWizards(wizards).forEach(function (wizard) {
         wizardsContainer.appendChild(window.renderWizard(wizard));
       });
-    }
+    } else {
+        errorHandler('Error. Server returned status: ' + e.target.status);
+      }
   };
 })();
 
 var getDifferentWizards = function (arr) {
   var newArr = [];
   var wizardsAmount = 5;
-  while (newArr.length < wizardsAmount) {
+
+  for (var i = 0; i < wizardsAmount; i++) {
     var randomItem = window.utils.getRandomElement(arr);
-    if (newArr.indexOf(randomItem) < 0) {
-      newArr.push(randomItem);
-    }
+    newArr.push(randomItem);
   }
+
   return newArr;
 };
 

@@ -1,16 +1,13 @@
 'use strict';
 
 window.colorizeElement = (function () {
-  return function (element, colors, fillCallback, url) {
+  return function (element, colors, fillCallback) {
     var currentColor = colors[0];
 
     var activityHandler = function (e) {
       var newColor = window.utils.getRandomElementExcept(colors, currentColor);
-      fillCallback(element, newColor);
+      fillCallback(element, newColor, URL_DATA);
       currentColor = newColor;
-      setTimeout(function () {
-        window.load(url, window.onLoad);
-      }, 5000);
     };
 
     element.addEventListener('click', function (e) {
