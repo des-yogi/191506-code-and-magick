@@ -134,9 +134,7 @@ window.onLoad = (function () {
       getDifferentWizards(wizards).forEach(function (wizard) {
         wizardsContainer.appendChild(window.renderWizard(wizard));
       });
-    }
-
-    else if (e.target.status >= 400) {
+    } else if (e.target.status >= 400) {
       errorHandler('Error. Server returned status: ' + e.target.status);
     }
 
