@@ -138,7 +138,6 @@ window.onLoad = (function () {
     else if (e.target.status >= 400) {
       errorHandler('Error. Server returned status: ' + e.target.status);
     }
-
   };
 })();
 
