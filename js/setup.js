@@ -134,9 +134,11 @@ window.onLoad = (function () {
       getDifferentWizards(wizards).forEach(function (wizard) {
         wizardsContainer.appendChild(window.renderWizard(wizard));
       });
-    } else {
-        errorHandler('Error. Server returned status: ' + e.target.status);
-      }
+    }
+    else {
+      errorHandler('Error. Server returned status: ' + e.target.status);
+    }
+
   };
 })();
 
