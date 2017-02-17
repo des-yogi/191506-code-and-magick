@@ -1,6 +1,9 @@
 'use strict';
 
+var URL_DATA = 'https://intensive-javascript-server-myophkugvq.now.sh/code-and-magick/data';
+
 // Открытие окна настройки персонажа.
+var setup = document.querySelector('.setup');
 var setupOpenBtn = document.querySelector('.setup-open-icon');
 var setupOverlay = document.querySelector('.overlay');
 
@@ -59,6 +62,8 @@ closeBtn.addEventListener('keydown', function (e) {
 var setupUser = document.querySelector('.setup-user');
 var wizardNameInput = setupUser.querySelector('.setup-user-name');
 var saveBtn = document.querySelector('.setup-submit');
+saveBtn.style.left = '20px';
+saveBtn.style.transform = 'none';
 
 wizardNameInput.addEventListener('click', function (e) {
   wizardNameInput.value = '';
@@ -75,7 +80,6 @@ saveBtn.addEventListener('click', function (e) {
   saveBtn.setAttribute('aria-pressed', 'true');
 });
 
-// Изменение цвета мантии персонажа по нажатию.
 var wizardAppearance = document.querySelector('.setup-wizard-appearance');
 var wizardCoatColor = wizardAppearance.querySelector('#wizard-coat');
 var wizardCoatColorSamples = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
@@ -86,22 +90,69 @@ var wizardEyesColor = wizardAppearance.querySelector('#wizard-eyes');
 var fireballColor = document.querySelector('.setup-fireball-wrap');
 var fireballColorSample = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
+var changeWizardTimeout = function (url) {
+  setTimeout(function () {
+    window.load(url, window.onLoad);
+  }, 5000);
+};
+
 var reColorFill = function (element, newColor) {
   element.style['fill'] = newColor;
+  changeWizardTimeout(URL_DATA);
 };
 
 var reColorBg = function (element, newColor) {
   element.style['background'] = newColor;
+  changeWizardTimeout(URL_DATA);
 };
 
 window.colorizeElement(wizardCoatColor, wizardCoatColorSamples, reColorFill);
-// window.colorizeElement(wizardCoatColor, wizardCoatColorSamples, 'fill');
 
-// Изменение цвета глаз персонажа по нажатию.
 window.colorizeElement(wizardEyesColor, wizardEyesColorSamples, reColorFill);
-// window.colorizeElement(wizardEyesColor, wizardEyesColorSamples, 'fill');
 
-//  Изменение цвета фаерболов по нажатию.
 window.colorizeElement(fireballColor, fireballColorSample, reColorBg);
-// window.colorizeElement(fireballColor, fireballColorSample, 'background');
 
+var wizardsContainer = document.createElement('div');
+wizardsContainer.className = 'setup-similar';
+wizardsContainer.style.width = '590px';
+wizardsContainer.style.height = '110px';
+wizardsContainer.style.transform = 'translate(160px, 400px)';
+wizardsContainer.style.display = 'flex';
+wizardsContainer.style.justifyContent = 'space-around';
+wizardsContainer.style.alignItems = 'flex-end';
+
+setup.appendChild(wizardsContainer);
+
+window.onLoad = (function () {
+  return function (e) {
+
+    var errorHandler = function (err) {
+      wizardsContainer.innerHTML = err;
+    };
+
+    if (e.target.status === 200) {
+      var wizards = e.target.response;
+      wizardsContainer.innerHTML = '';
+      getDifferentWizards(wizards).forEach(function (wizard) {
+        wizardsContainer.appendChild(window.renderWizard(wizard));
+      });
+    } else if (e.target.status >= 400) {
+      errorHandler('Error. Server returned status: ' + e.target.status);
+    }
+
+  };
+})();
+
+var getDifferentWizards = function (arr) {
+  var newArr = [];
+  var wizardsAmount = 5;
+
+  for (var i = 0; i < wizardsAmount; i++) {
+    var randomItem = window.utils.getRandomElement(arr);
+    newArr.push(randomItem);
+  }
+
+  return newArr;
+};
+
+window.load(URL_DATA, window.onLoad);
