@@ -135,9 +135,11 @@ window.onLoad = (function () {
         wizardsContainer.appendChild(window.renderWizard(wizard));
       });
     }
+
     else if (e.target.status >= 400) {
       errorHandler('Error. Server returned status: ' + e.target.status);
     }
+
   };
 })();
 
