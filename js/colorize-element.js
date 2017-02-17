@@ -6,8 +6,7 @@ window.colorizeElement = (function () {
 
     var activityHandler = function (e) {
       var newColor = window.utils.getRandomElementExcept(colors, currentColor);
-      var URL_DATA = 'https://intensive-javascript-server-myophkugvq.now.sh/code-and-magick/data';
-      fillCallback(element, newColor, URL_DATA);
+      fillCallback(element, newColor);
       currentColor = newColor;
     };
 

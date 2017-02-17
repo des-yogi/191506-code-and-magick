@@ -90,18 +90,20 @@ var wizardEyesColor = wizardAppearance.querySelector('#wizard-eyes');
 var fireballColor = document.querySelector('.setup-fireball-wrap');
 var fireballColorSample = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
-var reColorFill = function (element, newColor, url) {
-  element.style['fill'] = newColor;
+var changeWizardTimeout = function (url) {
   setTimeout(function () {
     window.load(url, window.onLoad);
   }, 5000);
 };
 
-var reColorBg = function (element, newColor, url) {
+var reColorFill = function (element, newColor) {
+  element.style['fill'] = newColor;
+  changeWizardTimeout(URL_DATA);
+};
+
+var reColorBg = function (element, newColor) {
   element.style['background'] = newColor;
-  setTimeout(function () {
-    window.load(url, window.onLoad);
-  }, 5000);
+  changeWizardTimeout(URL_DATA);
 };
 
 window.colorizeElement(wizardCoatColor, wizardCoatColorSamples, reColorFill);
